@@ -10,7 +10,31 @@ We use the Matterport Mask R-CNN repo as the base for this implementation of wil
 We use the wildfire smoke image dataset curated by [Center for Wildfire Research of University of Split, Croatia](http://wildfire.fesb.hr/) as our training/validation data.
 You can find them in the [samples/wildfire2/datasets/wildfire](samples/wildfire2/datasets/wildfire) folder.
 
-## Training 
+Install Docker:
+
+https://docs.docker.com/v17.12/docker-for-mac/install/#install-and-run-docker-for-mac
+
+Clone the repository (https://github.com/aiformankind/wildfire-smoke-mask-rcnn.git):
+```
+git clone https://github.com/aiformankind/wildfire-smoke-mask-rcnn.git
+```
+
+Go to the repository directory that you just clone:
+```
+cd wildfire-smoke-mask-rcnn
+```
+
+Build the docker (this job will set up the environment) :
+```
+docker build -t aiformankind/wildfire-mrcnn:0.0.1 .
+```
+
+Start the docker container :
+```
+docker run -it -p 8888:8888 -p 6006:6006  aiformankind/wildfire-mrcnn:0.0.1
+```
+
+## Training
 Train model starting from COCO weights
 ```
 cd samples/wildfire2/
@@ -29,3 +53,4 @@ Run the [samples/wildfire2/inspect_wildfire_smoke_model.ipynb](samples/wildfire2
 <p float="left">
 <img src=docs/wildfire-smoke-mask-detect-2.png />
 </p>
+
